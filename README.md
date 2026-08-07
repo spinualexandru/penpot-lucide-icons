@@ -1,7 +1,11 @@
 # Penpot Lucide Icons
 
+<img src="public/logo.png" alt="Lucide Icons logo" width="160">
+
 A Penpot plugin for finding and inserting icons from
 [Lucide](https://lucide.dev) into your designs.
+
+![Lucide Icons plugin interface](public/preview.png)
 
 ## Features
 
