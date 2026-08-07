@@ -1,0 +1,22 @@
+{
+  "name": "penpot-lucide-icons",
+  "description": "Browse and insert Lucide icons into your Penpot designs.",
+  "private": true,
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "tsc && vite build && npm run verify",
+    "verify": "node scripts/verify-plugin-bundle.mjs"
+  },
+  "dependencies": {
+    "@penpot/plugin-styles": "1.4.2",
+    "@penpot/plugin-types": "1.4.2",
+    "lucide-static": "^1.28.0"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vite": "^8.2.1"
+  }
+}

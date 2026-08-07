@@ -1,0 +1,6 @@
+{
+  "name": "Lucide Icons",
+  "code": "plugin.js",
+  "description": "Browse and insert Lucide icons into your Penpot designs.",
+  "permissions": ["content:read", "content:write"]
+}

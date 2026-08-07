@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lucide Icons</title>
+  </head>
+  <body>
+    <main class="app">
+      <header class="app-head">
+        <label class="input-label-hidden" for="search">Search icons</label>
+        <input
+          id="search"
+          class="input"
+          type="search"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="Search icons…"
+          data-handler="search"
+        />
+
+        <div class="controls">
+          <label class="body-xs" for="size">Size</label>
+          <input
+            id="size"
+            class="input"
+            type="number"
+            min="8"
+            max="512"
+            step="1"
+            value="24"
+            data-handler="size"
+          />
+
+          <label class="body-xs" for="stroke">Stroke</label>
+          <input
+            id="stroke"
+            class="input"
+            type="number"
+            min="0.5"
+            max="4"
+            step="0.25"
+            value="2"
+            data-handler="stroke"
+          />
+        </div>
+
+        <p class="body-xs app-count" data-handler="count">Loading icons…</p>
+      </header>
+
+      <div class="grid-scroll" data-handler="grid">
+        <p class="grid-empty body-s" data-handler="empty" hidden></p>
+      </div>
+
+      <p class="body-xs app-status" role="status" aria-live="polite" data-handler="status"></p>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

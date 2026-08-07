@@ -1,0 +1,168 @@
+@import "@penpot/plugin-styles/styles.css";
+
+/*
+ * Colours come exclusively from the @penpot/plugin-styles custom properties,
+ * which body[data-theme=light|dark] remaps. Nothing here is hardcoded, so both
+ * themes work without a single extra rule.
+ */
+
+html,
+body {
+  block-size: 100%;
+  margin: 0;
+}
+
+body {
+  line-height: 1.4;
+}
+
+/* Header and status are fixed; only the middle row scrolls. */
+.app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  block-size: 100dvh;
+}
+
+.app-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  padding: var(--spacing-8);
+  border-block-end: 1px solid var(--background-tertiary);
+}
+
+.app-head .input {
+  inline-size: 100%;
+  box-sizing: border-box;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr;
+  align-items: center;
+  gap: var(--spacing-8);
+}
+
+.controls .input {
+  inline-size: 100%;
+  box-sizing: border-box;
+  min-inline-size: 0;
+}
+
+.app-count,
+.app-status {
+  margin: 0;
+  color: var(--foreground-secondary);
+}
+
+.app-status {
+  padding: var(--spacing-4) var(--spacing-8);
+  border-block-start: 1px solid var(--background-tertiary);
+  min-block-size: 1.4em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-status[data-error="true"] {
+  color: var(--accent-secondary);
+}
+
+/* ---------- virtual grid ---------- */
+
+.grid-scroll {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-block-size: 0;
+}
+
+.vg-sizer {
+  position: relative;
+  inline-size: 100%;
+}
+
+.grid-empty {
+  padding: var(--spacing-16) var(--spacing-8);
+  color: var(--foreground-secondary);
+  text-align: center;
+}
+
+.vg-tile {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  /* Set from TILE_HEIGHT in main.ts so the grid maths and the CSS cannot drift. */
+  block-size: var(--vg-tile-height);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--spacing-8);
+  color: var(--foreground-primary);
+  cursor: pointer;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.vg-tile:hover {
+  background-color: var(--background-tertiary);
+}
+
+.vg-tile:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: -2px;
+}
+
+.vg-label {
+  inline-size: 100%;
+  text-align: center;
+  color: var(--foreground-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*
+ * The only place icon size, stroke width and colour live.
+ *
+ * Preview SVGs are emitted with no width/height/stroke/stroke-width attributes,
+ * so these declarations are unopposed — and because no lucide child node
+ * carries a stroke attribute either, stroke-width inherits cleanly all the way
+ * down. Changing a control is therefore two custom-property writes on <html>
+ * and zero DOM work.
+ *
+ * Grid previews are a fixed 24px: the size control affects only what gets
+ * inserted into Penpot, which keeps the list scannable at any size and means no
+ * control change can ever invalidate the rendered markup cache.
+ */
+:root {
+  /* Overwritten by main.ts whenever the stroke control changes. */
+  --icon-stroke: 2;
+}
+
+.lucide-svg {
+  inline-size: 24px;
+  block-size: 24px;
+  flex: none;
+  /*
+   * No `color` here on purpose: it inherits from .vg-tile's
+   * `color: var(--foreground-primary)`, which body[data-theme] remaps. So icons
+   * are near-black on the light theme and near-white on the dark one, always
+   * legible, with no JS involved.
+   *
+   * That inherited colour drives two things at once: `stroke: currentColor`
+   * below, and the node-level fill="currentColor" that 9 lucide icons carry.
+   */
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible; /* thick strokes at the viewBox edge */
+}
