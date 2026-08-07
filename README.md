@@ -5,7 +5,7 @@
 A Penpot plugin for finding and inserting icons from
 [Lucide](https://lucide.dev) into your designs.
 
-![Lucide Icons plugin interface](public/preview.png)
+<img src="public/preview.png" alt="Lucide Icons plugin interface" width="600">
 
 ## Features
 
@@ -16,8 +16,9 @@ A Penpot plugin for finding and inserting icons from
 
 ## Install
 
-Open a Penpot file, open the Plugin Manager (`Ctrl + Alt + P`), and install the
-plugin using its hosted `manifest.json` URL.
+Open a Penpot file, open the Plugin Manager (`Ctrl + Alt + P`), and when asked to add a URL for the plugin you want to install, use:
+
+`https://penpot-lucide-icons.netlify.app`
 
 ## Use
 
