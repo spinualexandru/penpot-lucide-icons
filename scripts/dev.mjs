@@ -41,6 +41,6 @@ process.on("SIGINT", () => shutdown(0));
 process.on("SIGTERM", () => shutdown(0));
 
 // --sourcemap keeps the dev-only sourcemaps the old setup provided, without
-// emitting them from `npm run build`.
+// emitting them from `pnpm build`.
 run("build --watch", ["build", "--watch", "--sourcemap"]);
 run("preview", ["preview"]);
