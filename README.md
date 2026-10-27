@@ -33,12 +33,12 @@ Penpot.
 ## Local Development
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Install `http://localhost:4400/manifest.json` in Penpot's Plugin Manager. Run
-`npm run build` to create a deployable build in `dist/`.
+`pnpm build` to create a deployable build in `dist/`.
 
 ## License
 
